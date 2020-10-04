@@ -21,7 +21,7 @@ raccoonTime("@RaccoonEveryHr")
 raccoonTime("@raccoonhourly")
 // turned this into a function, looks cleaner this way and you can add more accounts for the future
 
-function raccoonTime(args){
+function raccoonTime(args) {
     T.get('search/tweets', {
         q: args,
         count: 100

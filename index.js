@@ -16,6 +16,8 @@ var T = new twit({ // grab api keys from a .env
 
 if (consumer_key = process.env.CONSUMER_KEY, consumer_secret = process.env.CONSUMER_SECRET) {
     console.log("Sanity test checked. If returns error, set your API keys and such in a .env file please.")
+} else {
+    return
 }
 
 T.get('search/tweets', {

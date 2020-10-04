@@ -36,3 +36,22 @@ T.get('search/tweets', {
         }
     }
 })
+
+T.get('search/tweets', {
+    q: "@raccoonhourly",
+    count: 100
+}, function (err, data, response) {
+    var i;
+    for (i = 0; i < 99; i++) {
+        if (!data.statuses[i].extended_entities) {
+            console.log("empty")
+        } else {
+            console.log(data.statuses[i].extended_entities.media[0].media_url)
+            var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './raccoons', {
+                override: true
+            })
+            dl.on('end', () => console.log("downloaded raccoon"))
+            dl.start();
+        }
+    }
+})

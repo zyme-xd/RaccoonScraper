@@ -17,40 +17,27 @@ if (consumer_key = process.env.CONSUMER_KEY, consumer_secret = process.env.CONSU
     return
 }
 
-T.get('search/tweets', {
-    q: "@RaccoonEveryHr",
-    count: 100
-}, function (err, data, response) {
-    var i;
-    for (i = 0; i < 99; i++) {
-        if (!data.statuses[i].extended_entities) {
-            console.log("empty")
-        } else {
-            console.log(data.statuses[i].extended_entities.media[0].media_url)
-            var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './raccoons', {
-                override: true
-            })
-            dl.on('end', () => console.log("downloaded raccoon"))
-            dl.start();
-        }
-    }
-})
+raccoonTime("@RaccoonEveryHr")
+raccoonTime("@raccoonhourly")
+// turned this into a function, looks cleaner this way and you can add more accounts for the future
 
-T.get('search/tweets', {
-    q: "@raccoonhourly",
-    count: 100
-}, function (err, data, response) {
-    var i;
-    for (i = 0; i < 99; i++) {
-        if (!data.statuses[i].extended_entities) {
-            console.log("empty")
-        } else {
-            console.log(data.statuses[i].extended_entities.media[0].media_url)
-            var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './raccoons', {
-                override: true
-            })
-            dl.on('end', () => console.log("downloaded raccoon"))
-            dl.start();
+function raccoonTime(args){
+    T.get('search/tweets', {
+        q: args,
+        count: 100
+    }, function (err, data, response) {
+        var i;
+        for (i = 0; i < 99; i++) {
+            if (!data.statuses[i].extended_entities) {
+                console.log("empty")
+            } else {
+                console.log(data.statuses[i].extended_entities.media[0].media_url) // grab url from a array
+                var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './raccoons', { // download image from url
+                    override: true
+                })
+                dl.on('end', () => console.log("downloaded raccoon")) // message
+                dl.start();
+            }
         }
-    }
-})
+    })
+}

@@ -3,6 +3,7 @@ const fs = require("fs")
 const path = require("path")
 const https = require("https")
 require('dotenv').config()
+const {DownloaderHelper} = require('node-downloader-helper')
 
 var T = new twit({  // grab api keys from a .env 
     consumer_key:         process.env.CONSUMER_KEY,
@@ -19,11 +20,13 @@ T.get('search/tweets', { q : "@RaccoonEveryHr", count: 100 }, function(err, data
     var i;
     for(i = 0; i < 99; i++){
         if(!data.statuses[i].extended_entities){
-            console.log("EMPTY") // if there is no attachment, say empty
+            console.log("empty")
         }
         else{
             console.log(data.statuses[i].extended_entities.media[0].media_url) // print out urls. in the morning please make this actually save this garbage
-                    
+            var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url,'./raccoons', {override : true})   
+            dl.on('end', () => console.log("downloaded raccoon"))
+            dl.start();
                 }
             }
         })

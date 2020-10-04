@@ -1,11 +1,29 @@
 const twit = require("twit")
 const fs = require("fs")
 const path = require("path")
-const dotenv = require("dotenv")
+const https = require("https")
+require('dotenv').config()
 
-const T = new Twit({  // grab api keys from a .env 
+var T = new twit({  // grab api keys from a .env 
     consumer_key:         process.env.CONSUMER_KEY,
     consumer_secret:      process.env.CONSUMER_SECRET,
     access_token:         process.env.ACCESS_TOKEN,
     access_token_secret:  process.env.ACCESS_TOKEN_SECRET,
   })
+
+if(consumer_key = process.env.CONSUMER_KEY, consumer_secret = process.env.CONSUMER_SECRET){
+    console.log("Sanity test checked. If returns error, set your API keys and such in a .env file please.")
+}
+
+T.get('search/tweets', { q : "@RaccoonEveryHr", count: 100 }, function(err, data, response) {
+    var i;
+    for(i = 0; i < 99; i++){
+        if(!data.statuses[i].extended_entities){
+            console.log("EMPTY") // if there is no attachment, say empty
+        }
+        else{
+            console.log(data.statuses[i].extended_entities.media[0].media_url) // print out urls. in the morning please make this actually save this garbage
+                    
+                }
+            }
+        })

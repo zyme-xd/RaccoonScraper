@@ -23,7 +23,7 @@ T.get('search/tweets', { q : "@RaccoonEveryHr", count: 100 }, function(err, data
             console.log("empty")
         }
         else{
-            console.log(data.statuses[i].extended_entities.media[0].media_url) // print out urls. in the morning please make this actually save this garbage
+            console.log(data.statuses[i].extended_entities.media[0].media_url)
             var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url,'./raccoons', {override : true})   
             dl.on('end', () => console.log("downloaded raccoon"))
             dl.start();

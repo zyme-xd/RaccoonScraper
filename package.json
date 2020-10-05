@@ -1,0 +1,25 @@
+{
+  "name": "twitterimagescraper",
+  "version": "1.0.0",
+  "description": "image grabber using api",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-downloader-helper": "^1.0.14",
+    "twit": "^2.2.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyme-xd/RaccoonScraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zyme-xd/RaccoonScraper/issues"
+  },
+  "homepage": "https://github.com/zyme-xd/RaccoonScraper#readme"
+}

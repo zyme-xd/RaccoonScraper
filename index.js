@@ -17,11 +17,11 @@ if (consumer_key = process.env.CONSUMER_KEY, consumer_secret = process.env.CONSU
     return
 }
 
-raccoonTime("@RaccoonEveryHr")
-raccoonTime("@raccoonhourly")
+getImageFromAcc("@")
+getImageFromAcc("@")
 // turned this into a function, looks cleaner this way and you can add more accounts for the future
 
-function raccoonTime(args) {
+function getImageFromAcc(args) {
     T.get('search/tweets', {
         q: args,
         count: 100
@@ -32,10 +32,10 @@ function raccoonTime(args) {
                 console.log("empty")
             } else {
                 console.log(data.statuses[i].extended_entities.media[0].media_url) // grab url from a array
-                var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './raccoons', { // download image from url
+                var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './folder', { // download image from url
                     override: true
                 })
-                dl.on('end', () => console.log("downloaded raccoon")) // message
+                dl.on('end', () => console.log("downloaded iamge")) // message
                 dl.start();
             }
         }

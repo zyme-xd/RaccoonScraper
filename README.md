@@ -1,9 +1,7 @@
-# RaccoonScraper
+# TwitterImageScraper
 
-do you want to save racoons to ur pc?
+do you want to save twitter images from an account to ur pc?
 
-with this tool it will grab you raccoon images for free (no virus unpatched)
-
-
+well. this js program will do that for you!
 
 https://www.youtube.com/watch?v=g53vGbfzmaY&feature=youtu.be

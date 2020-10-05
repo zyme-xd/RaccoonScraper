@@ -1,12 +1,11 @@
 {
-  "name": "raccoonscraper",
+  "name": "twitterimagescraper",
   "version": "1.0.0",
-  "description": "raccoon scraping",
+  "description": "image grabber using api",
   "main": "index.js",
   "dependencies": {
     "dotenv": "^8.2.0",
     "node-downloader-helper": "^1.0.14",
-    "puppeteer": "^5.3.1",
     "twit": "^2.2.11"
   },
   "devDependencies": {},

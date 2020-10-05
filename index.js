@@ -35,7 +35,7 @@ function getImageFromAcc(args) {
                 var dl = new DownloaderHelper(data.statuses[i].extended_entities.media[0].media_url, './folder', { // download image from url
                     override: true
                 })
-                dl.on('end', () => console.log("downloaded iamge")) // message
+                dl.on('end', () => console.log("downloaded image")) // message
                 dl.start();
             }
         }
